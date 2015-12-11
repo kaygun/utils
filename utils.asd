@@ -8,7 +8,7 @@
 
 (defsystem :utils
   :author "Atabey Kaygun (atabey_kaygun@hotmail.com)"
-  :description "A very rudimentary functional lazy sequence library"
+  :description "A collection of useful LISP functions."
   :licence "BSD"
   :version "1.0"
   :components ((:file "lazy")
