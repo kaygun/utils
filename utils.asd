@@ -1,14 +1,15 @@
 (defpackage :utils
    (:use :common-lisp :asdf :cl-ppcre)
    (:export :->> :-> :lreduce :lmap :lfilter
-            :merge-with :lazy-seq :take :until
-            :entropy :transpose))
+            :merge-with :lazy-seq :seq :take :until
+            :entropy :transpose :concurrent-map
+            :concurrent-reduce))
 
 (in-package :utils)
 
 (defsystem :utils
   :author "Atabey Kaygun (atabey_kaygun@hotmail.com)"
-  :description "A collection of useful LISP functions."
+  :description "A very rudimentary functional lazy sequence library"
   :licence "BSD"
   :version "1.0"
   :components ((:file "lazy")
