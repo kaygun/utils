@@ -21,12 +21,3 @@
         (setf x (append (list (car f) x) (cdr f)))
         (setf x (list f x))))) 
 
-(defun concurrent-map (fs xs)
-  (mapcar (lambda (x) (mapcar (lambda (f) (funcall f x))
-                              fs))
-          xs))
-
-(defun concurrent-reduce (rs inits xs)
-  (mapcar (lambda (r i) (reduce r xs :initial-value i))
-          rs inits))
-
