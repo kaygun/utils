@@ -9,6 +9,16 @@
             (rplacd (assoc (car current) res :test #'equal)
                     (funcall fn val (cdr current))))))))
 
+(defun group-by (xs fn)
+  (let (res)
+    (dolist (x xs res)
+      (let* ((y (funcall fn x))
+             (z (cdr (assoc y res))))
+        (if (null z)
+            (push (cons y (list x)) res)
+            (setf (cdr (assoc y res))
+                  (cons x z)))))))
+
 (defmacro ->> (x &rest forms)
   (dolist (f forms x)
     (if (listp f)

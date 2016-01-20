@@ -20,7 +20,7 @@
  	   (format dot-file "digraph G {~% node[shape=circle];~% ~{ ~{\"~A\" -> \"~A\"; ~} ~% ~} ~%}~%" G)
 	   (format dot-file "graph G {~% node[shape=circle]; ~% ~{ ~{\"~A\" -- \"~A\"; ~} ~% ~} }~%" G)))
      (uiop:run-program 
-          (format nil "circo -T png -o ~A.png ~:*~A.dot" filename))
+          (format nil "dot -T png -o ~A.png ~:*~A.dot" filename))
      (format nil "![](~a.png)~%" filename)))
 
 

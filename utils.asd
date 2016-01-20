@@ -1,7 +1,7 @@
 (defpackage :utils
    (:use :common-lisp :asdf :cl-ppcre)
    (:export ->> -> lreduce lmap lfilter
-            merge-with lazy-seq seq take until
+            merge-with group-by lazy-seq seq take until
             entropy transpose write-dot r-command data-plot
             concurrent-map concurrent-reduce))
 
