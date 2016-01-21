@@ -9,7 +9,7 @@
             (rplacd (assoc (car current) res :test #'equal)
                     (funcall fn val (cdr current))))))))
 
-(defun group-by (xs fn)
+(defun group-by (xs &optional (fn (lambda (x) x)))
   (let (res)
     (dolist (x xs res)
       (let* ((y (funcall fn x))
