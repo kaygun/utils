@@ -1,5 +1,12 @@
 (in-package :utils)
 
+(defun update (table key val &optional (fn #'cons))
+  (multiple-value-bind (x foundp)
+      (gethash key table)
+    (if foundp
+	(setf (gethash key table) (funcall fn val x))
+	(setf (gethash key table) val))))
+
 (defun concurrent-map (fs xs)
   (mapcar (lambda (x) (mapcar (lambda (f) (funcall f x))
                               fs))
@@ -8,7 +15,6 @@
 (defun concurrent-reduce (rs inits xs)
   (mapcar (lambda (r i) (reduce r xs :initial-value i))
           rs inits))
-
 
 (defun write-dot (G filename &optional (directed nil))
   (progn 
@@ -20,7 +26,7 @@
  	   (format dot-file "digraph G {~% node[shape=circle];~% ~{ ~{\"~A\" -> \"~A\"; ~} ~% ~} ~%}~%" G)
 	   (format dot-file "graph G {~% node[shape=circle]; ~% ~{ ~{\"~A\" -- \"~A\"; ~} ~% ~} }~%" G)))
      (uiop:run-program 
-          (format nil "circo -T png -o ~A.png ~:*~A.dot" filename))
+          (format nil "dot -T png -o ~A.png ~:*~A.dot" filename))
      (format nil "![](~a.png)~%" filename)))
 
 
