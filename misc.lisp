@@ -1,5 +1,11 @@
 (in-package :utils)
 
+(defun slurp (filename)
+  (with-open-file (input filename :direction :input)
+    (do* ((line (read-line input nil) (read-line input nil))
+          (res line (concatenate 'string res " " line)))
+         ((null line) res))))
+
 (defun concurrent-map (fs xs)
   (mapcar (lambda (x) (mapcar (lambda (f) (funcall f x))
                               fs))
