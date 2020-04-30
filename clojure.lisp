@@ -38,7 +38,7 @@
         (setf x (append (list (car f) x) (cdr f)))
         (setf x (list f x))))) 
 
-(defmacro juxt (&rest fns)
+(defun juxt (&rest fns)
   (lambda (x)
     (mapcar (lambda (f) (funcall f x)) fns)))
 
