@@ -1,5 +1,8 @@
 (in-package :utils)
 
+(defun partial (&rest args)
+  (lambda (x) (append args (list x))))
+
 (defun range (a b &optional carry)
   (if (equal a b)
       (reverse carry)

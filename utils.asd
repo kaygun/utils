@@ -10,4 +10,5 @@
                (:file "data" :depends-on ("misc"))))
 
 (defpackage :utils
-   (:use :common-lisp :asdf :cl-ppcre :uiop))
+  (:use :common-lisp :asdf :cl-ppcre :uiop)
+  (:export "->" "->>" "JUXT"))
